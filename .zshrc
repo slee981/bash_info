@@ -48,21 +48,11 @@ alias gb="git branch"
 alias reset-launch="defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock"
 
 # display terminal message
-# python3 ~/Documents/Code/terminalGreeting.txt
+python3 ~/Dropbox/CodeWorkspace/python/terminalGreeting.py
 
-# added by Anaconda3 2019.07 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/stevelee/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
-else
-    if [ -f "/Users/stevelee/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/stevelee/anaconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="/Users/stevelee/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda init <<<
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Library/google-cloud-sdk/path.zsh.inc' ]; then . '/Library/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Library/google-cloud-sdk/completion.zsh.inc' ]; then . '/Library/google-cloud-sdk/completion.zsh.inc'; fi
