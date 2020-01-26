@@ -81,3 +81,9 @@ if [ -f '/Library/google-cloud-sdk/path.zsh.inc' ]; then . '/Library/google-clou
 # The next line enables shell command completion for gcloud.
 if [ -f '/Library/google-cloud-sdk/completion.zsh.inc' ]; then . '/Library/google-cloud-sdk/completion.zsh.inc'; fi
 
+#############################################
+# DOCKER COMMAND ALIASES 
+
+alias haskell-docker='docker run -it --rm -v $PWD:/usr/src/ haskell:8'
+alias go-docker='docker run -it --rm -v $PWD:/go/src/ golang:1.8 bash'
+
