@@ -39,7 +39,7 @@ tc() {
 
     # check if color is number and between 0 and 7
     if [[ $color =~ '^[0-9]+$' ]]; then 
-        color=$(( color % 8 )); 
+        color=$(( color % 8 ));
         i=$(( color + 1))
     fi
 
@@ -101,6 +101,9 @@ PROMPT=$'\n%F{red} %~%F{yellow}$(parse_git_branch) %f \n\n %# '
 autoload -Uz compinit && compinit
 autoload bashcompinit && bashcompinit
 
+# autojump 
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
 # partial completion suggestions
 zstyle ':completion:*' list-suffixes
 zstyle ':completion:*' expand prefix suffix
@@ -123,7 +126,7 @@ export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl/lib/"
 alias -g c="clear"
 alias -g la="ls -A"
 alias -g ll="ls -al"
-alias b="cd .. && clear"
+alias -g b="cd .. && clear"
 
 # alias for git 
 alias ga="git add"
@@ -131,9 +134,6 @@ alias gc="git commit"
 alias gs="git status" 
 alias gl="git log --oneline --graph --decorate --all"
 alias gb="git branch"
-
-# alias for jumps 
-alias cdcode="cd ~/Dropbox/CodeWorkspace"
 
 # alias for octave 
 alias octave="octave-cli"
