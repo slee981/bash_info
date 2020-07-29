@@ -2,10 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -56,17 +52,11 @@ if [ -n "$force_color_prompt" ]; then
 	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
     else
-	color_prompt=
+	color_prompt=no
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1="\n \[\e[31m\]\w\[\e[0m\]\033[33m\]\$(parse_git_branch)\[\033[00m\]\n\n $ "
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+PS1="\n \[\e[31m\]\w\[\e[0m\]\033[33m\]\$(parse_git_branch)\[\033[00m\]\n\n $ "
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -105,6 +95,8 @@ alias gs="git status"
 alias gl="git log --oneline --graph --decorate --all"
 alias gb="git branch"
 
+alias c="clear"
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -128,3 +120,25 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+#####################################################################
+# FUNCTIONS
+
+newdir() {
+    mkdir $1 && cd $1
+}
+
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+#####################################################################
+# Docker 
+
+alias go-docker="sudo docker run -it --rm -v $(pwd):/usr/stephen golang-vim"
+
+#####################################################################
+# Autojump 
+
+. /usr/share/autojump/autojump.sh
+
