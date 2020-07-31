@@ -135,7 +135,7 @@ parse_git_branch() {
 #####################################################################
 # Docker 
 
-alias go-docker="sudo docker run -it --rm -v $(pwd):/usr/stephen golang-vim"
+alias go-docker='sudo docker run -it --rm -v $PWD:/usr/stephen golang-vim'
 
 #####################################################################
 # Autojump 
