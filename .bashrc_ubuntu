@@ -56,13 +56,17 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-PS1="\n \[\e[31m\]\w\[\e[0m\]\033[33m\]\$(parse_git_branch)\[\033[00m\]\n\n $ "
+# set default PS1 
+PS1="\n \[\e[31m\]\w\[\e[0m\]\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\n\n $ "
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
     # PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    PS1="\n \[\e[31m\]\w\[\e[0m\]\033[33m\]\$(parse_git_branch)\[\033[00m\]\n\n $ "
+
+    # set default PS1 
+    PS1="\n \[\e[31m\]\w\[\e[0m\]\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\n\n $ "
+
     ;;
 *)
     ;;
